@@ -8,22 +8,22 @@ import FavoriteMoviesPage from "./pages/favoriteMoviesPage";
 import SiteHeader from './components/siteHeader'
 import UpcomingPage from "./pages/UpcomingPage";
 import TrendingMoviesPage from "./pages/TrendingMoviesPage";
-
-
 import LatestMoviesPage from "./pages/LatestMoviesPage";
-
 import PopularMoviesPage  from "./pages/PopularMoviesPage";
-
-
 import PopularPeoplePage from './pages/popularPeoplePage';
 import PersonDetailsPage from './pages/personDetailsPage';
-
 import MoviesContextProvider from "./contexts/moviesContext";
-
-
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
-import AddMovieReviewPage from './pages/addMovieReviewPage'
+import AddMovieReviewPage from './pages/addMovieReviewPage';
+
+
+import LoginPage from "./pages/loginPage";
+import AuthContextProvider from "./contexts/authContext";
+import ProtectedRoutes from "./protectedRoutes";
+import SignUpPage from "./pages/signUpPage";
+
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,6 +40,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <AuthContextProvider> 
         <SiteHeader />
         <MoviesContextProvider>
         <Routes>
@@ -55,8 +56,25 @@ const App = () => {
           <Route path="/people/:id" element={<PersonDetailsPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={ <Navigate to="/" /> } />
+          
+          <Route element={<ProtectedRoutes />} />
+  
+  {/* new routes login -sign up */}
+  <Route path="/login" element={<LoginPage />} />
+  <Route path="/signup" element={<SignUpPage />} />
+  <Route path="/movies" element={<Navigate to="/" />} />
+  <Route path="/logout" element={<LoginPage />} />
+
+
+
+          
+
+        
+
+         
         </Routes>
         </MoviesContextProvider>
+        </AuthContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

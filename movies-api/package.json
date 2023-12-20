@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node index.js",
-    "dev": "babel-node ./initialise-dev/initDevDB.js && nodemon --exec npm start"
-  },
+    "dev": "npx babel-node ./initialise-dev/initDevDB.js && nodemon --exec npm start"  },
   "author": "Maxamed-Maxamed",
   "license": "ISC",
   "devDependencies": {
