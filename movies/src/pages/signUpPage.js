@@ -10,21 +10,6 @@ const SignUpPage = props => {
   const [passwordAgain, setPasswordAgain] = useState("");
   const [registered, setRegistered] = useState(false);
   const [error, setError] = useState("");
-  // const register = () => {
-  //   let passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-  //   const validPassword = passwordRegEx.test(password);
-
-  //   if (validPassword && password === passwordAgain) {
-  //     context.register(userName, password);
-  //     setRegistered(true);
-  //   }
-  // }
-
-  // if (registered === true) {
-  //   return <Navigate to="/login" />;
-  // }
-
-  
 
   const register = () => {
     let passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
